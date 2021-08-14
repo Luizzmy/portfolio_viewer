@@ -1,5 +1,5 @@
 import React,{ useState, createContext, useContext, useEffect } from 'react'
-import { currentUserFn } from '../services/auth'
+import { currentUserFn } from '../services/index'
 
 export const DataContext = createContext()
 
