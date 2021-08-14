@@ -1,7 +1,7 @@
 import React,{ useState, createContext, useContext, useEffect } from 'react'
 import { Col, Row, Input, Form, Button, message } from 'antd'
-// import { loginFn } from '../services/auth'
-// import { useContextData } from '../hooks/context'
+import { loginFn } from '../services/index'
+import { useContextData } from '../hooks/context'
 import { Redirect } from 'react-router'
 
 const errormessage=(errmessage)=>{
