@@ -13,20 +13,14 @@ function LayoutApp({children}) {
 
     return (
       <>
-      {/* {user? null : <Redirect to={"/login"}/>} */}
-      {/* {user ?  */}
       
       <Layout style={{ minHeight: '100vh' }}>
-      <SiderMenu/>
+      <Header className="site-layout-background" style={{ padding: 0}}>
+      </Header>
       <Layout className="site-layout">
-        <Header className="site-layout-background" style={{ padding: 0}}>
-
+      <SiderMenu/>
         <Row justify="end" align="middle" style>
-          {/* <div style={{margin:"2px 35px 0 0"}}> */}
-
-          {/* </div> */}
         </Row>
-          </Header>
         <Content style={{ margin: '0 16px', textAlign:"left" }}>
           <div className="site-layout-background" 
           style={{ padding: 24, minHeight: 360, backgroundColor:"white" }}>
