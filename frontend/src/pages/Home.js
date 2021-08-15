@@ -3,6 +3,7 @@ import {Col, Row, Typography, Button} from 'antd'
 import { useContextData } from '../hooks/context';
 import { Redirect} from 'react-router-dom'
 import Upload from '../components/Upload';
+import AllPortfolios from '../components/AllPortfolios';
 
 const {Title}=Typography
 function Home() {
@@ -20,9 +21,10 @@ function Home() {
 
     <Title level={1}> Welcome to the Portfolio Viewer App</Title>
     <Title level={2}> Please upload a portfolio as a CSV file, look at your previous portfolios or choose one from the sider to view the detail and be able to edit</Title>
+    <AllPortfolios/>
+    <br/>
     <Upload/>
     <br/>
-    <Button type="primary">View all portfolios</Button>
 </Col>
 </Row>
 

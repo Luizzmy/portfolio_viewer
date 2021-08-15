@@ -47,7 +47,7 @@ res.status(201).json(newPortfolio)
 });
 
 //Update a portfolio
-router.post('/edit/:portfolioId', isAuth, async (req, res, next) => {
+router.put('/edit/:portfolioId', isAuth, async (req, res, next) => {
   const { portfolioId } = req.params
   const { fileName,
     header,
