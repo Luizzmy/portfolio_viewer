@@ -1,25 +1,25 @@
-import axios from 'axios';
-let baseURL;
+import axios from 'axios'
 
-process.env.NODE_ENV === 'production'
-  ? (baseURL = 'here should be your production endpoint')
-  : (baseURL = 'http://localhost:3000');
+const baseURL = process.env.NODE_ENV === 'development' ?
+  `http://localhost:3000/` : '/'
+  // /routes/auth
 
-const service = axios.create({ withCredentials: true, baseURL });
+const authService = axios.create({
+  baseURL,
+  withCredentials: true
+})
 
-const MY_SERVICE = {
-  test: async () => {
-    return await service.get('/');
-  },
-  signup: async (user) => {
-    return await SERVICE.post('/signup', user);
-  },
-  login: async (user) => {
-    return await SERVICE.post('/login', user);
-  },
-  logOut: async () => {
-    return await SERVICE.get('/logout');
-  }
-};
+export const signupFn = userInfo =>
+  authService.post('/signup', userInfo)
 
-export default MY_SERVICE;
+export const loginFn = userInfo =>
+  authService.post('/login', userInfo)
+
+export const userDetails= () => 
+  authService.get(`/profile`)
+
+export const currentUserFn = () =>
+  authService.get('/current-user')
+
+export const logoutFn = () =>
+  authService.get('/logout')

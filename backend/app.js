@@ -11,7 +11,7 @@ const session = require('express-session');
 const passport = require('./config/passport');
 
 mongoose
-  .connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.DB || 'mongodb://localhost/backend', { useNewUrlParser: true, useUnifiedTopology: true })
   .then((x) => console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`))
   .catch((err) => console.error('Error connecting to mongo', err));
 
@@ -51,6 +51,6 @@ app.use('/', index);
 app.use('/', auth);
 
 // Uncomment this line for production
-// app.get('/*', (req, res) => res.sendFile(__dirname + '/public/index.html'));
+app.get('/*', (req, res) => res.sendFile(__dirname + '/public/build/index.html'));
 
 module.exports = app;

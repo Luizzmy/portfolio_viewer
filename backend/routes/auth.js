@@ -25,6 +25,10 @@ router.get('/profile', isAuth, (req, res, next) => {
     .catch((err) => res.status(500).json({ err }));
 });
 
+router.get('/current-user', (req, res, next) => {
+  res.json(req.user || null)
+});
+
 function isAuth(req, res, next) {
   req.isAuthenticated() ? next() : res.status(401).json({ msg: 'Log in first' });
 }

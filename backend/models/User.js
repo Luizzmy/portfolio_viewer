@@ -4,7 +4,10 @@ const PLM = require('passport-local-mongoose');
 const userSchema = new Schema(
   {
     email: String,
-    name: String
+    portfolios:[{
+      type: Schema.Types.ObjectId,
+      ref:"Portfolio"
+    }],
   },
   {
     timestamps: true,
