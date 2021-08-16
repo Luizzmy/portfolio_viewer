@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Layout, Menu } from 'antd';
 import {
   LogoutOutlined,
@@ -11,7 +11,18 @@ const { Sider } = Layout;
 
 function SiderMenu() {
 
+  const [collapsed, setCollapsed] = useState(false)
+
   const { logout } = useContextData()
+
+  const onCollapse = () => {
+    if (collapsed) {
+        setCollapsed(false)
+    } else {
+        setCollapsed(true)
+    }
+
+}
 
   async function handleLogout() {
     await logoutFn()
@@ -20,7 +31,7 @@ function SiderMenu() {
   }
 
   return (
-    <Sider width={200} className="site-layout-background">
+    <Sider width={130} breakpoint="md" collapsible collapsed={collapsed} onCollapse={onCollapse} >
       <Menu
         mode="inline"
         style={{ height: '100%', borderRight: 0 }}
