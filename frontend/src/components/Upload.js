@@ -45,6 +45,8 @@ const Upload = () => {
     var data = result.data;
 
 
+
+
     const headers = Object.keys(data[0])
     let columns = []
     let dataSource = []
@@ -52,9 +54,11 @@ const Upload = () => {
       columns.push({
         title: e,
         dataIndex: e,
-        editable: true
+        editable: true,
       })
     });
+
+    
     for (let i = 0; i < data.length; i++) {
       data[i]['key'] = i
       dataSource.push(data[i])
@@ -73,6 +77,7 @@ const Upload = () => {
 
   useEffect(() => {
     if (csvData) {
+      console.log(csvData)
       sessionStorage.setItem('csvFile', JSON.stringify(csvData));
     }
   }, [csvData]);
