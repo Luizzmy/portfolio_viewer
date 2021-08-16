@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
-import { Table, Input, Button, Form, Col, Row, Typography } from 'antd';
+import { Table, Input, Button, Form, Col, Row, Typography, Popconfirm } from 'antd';
 import axios from 'axios'
 import { portfolioUpdate } from '../services/portfolio';
 
@@ -110,6 +110,10 @@ function findValue(o, value) {
   return null;
 }
 
+
+
+
+
 function TablePortfolio({ data }) {
 
   const [tableData, settableData] = useState()
@@ -152,6 +156,7 @@ function TablePortfolio({ data }) {
         setTotalPosition(Math.floor(res*100)/100)
       }
     }
+
     getTotalPostition(tableData)
   }, [tableData])
 
@@ -220,7 +225,7 @@ function TablePortfolio({ data }) {
     },
   };
 
-  const columns = data.header.map((col) => {
+  let columns = data.header.map((col) => {
     if (!col.editable) {
       return col;
     }
@@ -235,6 +240,33 @@ function TablePortfolio({ data }) {
       }),
     };
   });
+
+  if(columns[columns.length-1].title!=="operation"){
+    columns.push({
+      title: 'operation',
+      dataIndex: 'operation',
+      render: (_, record) =>
+        tableData.length >= 1 ? (
+          <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
+            <a>Delete</a>
+          </Popconfirm>
+        ) : null,
+    },)
+  }
+
+  
+
+  const handleDelete = (key) => {
+    let dataSource = tableData;
+    const dataArr=dataSource.filter((item) => item.key !== key)
+    dataSource=dataArr
+    settableData(dataSource)
+    setChange(true)
+  };
+
+  function onChange(pagination, filters, sorter, extra) {
+    console.log('params', pagination, filters, sorter, extra);
+  }
 
   ///// Renders component
   return (
@@ -270,6 +302,7 @@ function TablePortfolio({ data }) {
             rowClassName={() => 'editable-row'}
             bordered
             dataSource={tableData}
+            onChange={onChange}
             columns={columns}
             pagination={{ pageSize: 50 }}
           />
