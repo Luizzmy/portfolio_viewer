@@ -149,7 +149,7 @@ function TablePortfolio({ data }) {
           const position = parseFloat(replaceCommas(e.Price)) * parseFloat(replaceCommas(e.FXRate)) * e.Holding
           res = res + position
         })
-        setTotalPosition(res)
+        setTotalPosition(Math.floor(res*100)/100)
       }
     }
     getTotalPostition(tableData)
@@ -265,6 +265,7 @@ function TablePortfolio({ data }) {
         </Row>
         {tableData ?
           <Table
+          scroll={{x:350}}
             components={components}
             rowClassName={() => 'editable-row'}
             bordered
