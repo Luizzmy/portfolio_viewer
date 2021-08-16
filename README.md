@@ -1,6 +1,6 @@
 # Welcome to Portfolio Viewer
 This app allows you to:
-Upload a csv file, store it in session, look at the file in a table, select previously uploaded files, calculates and shows total portfolio value given by the sum of positions values (Holding*Price*FXRate), validates your currency name against the open exchangerates API, allows the user to edit the data and update the Total Portfolio value and stores and updates the portfolios on a MongoDB database.
+Upload a csv file, store it in session, look at the file in a table, select previously uploaded files, calculates and shows total portfolio value given by the sum of positions values (Holding x Price x FXRate), validates your currency name against the open exchangerates API, allows the user to edit the data and update the Total Portfolio value and stores and updates the portfolios on a MongoDB database.
 
 ## DEMO Account
 
