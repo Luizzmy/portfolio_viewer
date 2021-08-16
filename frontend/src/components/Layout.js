@@ -1,15 +1,10 @@
-import React, { useEffect } from 'react'
-import { Layout, Row, Col} from 'antd';
+import React from 'react'
+import { Layout, Row } from 'antd';
 import SiderMenu from './Sider'
-// import { useContextData } from '../hooks/context';
-
-import { Redirect} from 'react-router-dom'
 
 const { Header, Content} = Layout;
 
 function LayoutApp({children}) {
-
-
 
     return (
       <>
@@ -29,10 +24,6 @@ function LayoutApp({children}) {
         </Content>
       </Layout>
     </Layout>
-    {/* :
-    <Redirect to={'/login'}/> */}
-    {/* } */}
-
       </>
     )
 }

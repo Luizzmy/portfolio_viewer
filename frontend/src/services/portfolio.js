@@ -3,17 +3,18 @@ import axios from 'axios'
 const baseURL = process.env.NODE_ENV === 'development' ?
   `http://localhost:3000/` : '/'
 
+  /// Portfolio routes, baseURL assumes build folder will be saved in backend folder
 const portfolioService = axios.create({
   baseURL,
   withCredentials: true
 })
-// export service-functions to target page
 
+////Portfolio CRUD
 // get all
 export const getUserPortfolios = () => 
 portfolioService.get(`/user-portfolios`)
 
-// details
+// details 
 export const getPortfolioDetails = (_id) => 
 portfolioService.get(`/portfolio/${_id}`)
 

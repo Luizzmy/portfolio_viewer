@@ -3,6 +3,7 @@ import axios from 'axios'
 const baseURL = process.env.NODE_ENV === 'development' ?
   `http://localhost:3000/` : '/'
   // /routes/auth
+  ///Authentication routes, the baseURL assumes build folder will be in backend folder
 
 const authService = axios.create({
   baseURL,

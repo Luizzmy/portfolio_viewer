@@ -1,47 +1,47 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import { Layout, Menu } from 'antd';
 import {
-    UserOutlined,
-    LaptopOutlined,
-    NotificationOutlined,
-    TableOutlined,
-    LogoutOutlined,
-    AreaChartOutlined
+  LogoutOutlined,
 } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+
 import { useContextData } from '../hooks/context'
 import { logoutFn } from '../services/index'
-// import { useContextData } from '../hooks/context'
-
-const { SubMenu } = Menu;
-
 
 const { Sider } = Layout;
 
+function SiderMenu() {
 
-function SiderMenu({history}) {
+  const [collapsed, setCollapsed] = useState(false)
 
-const { user, logout } = useContextData()
+  const { logout } = useContextData()
 
-async function handleLogout() {
-  await logoutFn()
-  sessionStorage.clear()
-  logout()
+  const onCollapse = () => {
+    if (collapsed) {
+        setCollapsed(false)
+    } else {
+        setCollapsed(true)
+    }
 
 }
-    
-    return (
-        <Sider width={200} className="site-layout-background">
-        <Menu
-          mode="inline"
-          style={{ height: '100%', borderRight: 0 }}
-        >
-          <Menu.Item key="1" icon={<LogoutOutlined />} onClick={handleLogout}>
-                    Logout
-            </Menu.Item>
-        </Menu>
-      </Sider>
-    )
+
+  async function handleLogout() {
+    await logoutFn()
+    sessionStorage.clear()
+    logout()
+  }
+
+  return (
+    <Sider width={130} breakpoint="md" collapsible collapsed={collapsed} onCollapse={onCollapse} >
+      <Menu
+        mode="inline"
+        style={{ height: '100%', borderRight: 0 }}
+      >
+        <Menu.Item key="1" icon={<LogoutOutlined />} onClick={handleLogout}>
+          Logout
+        </Menu.Item>
+      </Menu>
+    </Sider>
+  )
 
 }
 
