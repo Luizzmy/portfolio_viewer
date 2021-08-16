@@ -16,7 +16,7 @@ function Home() {
                     <Col sm={24}>
 
                         <Title level={1}> Welcome to the Portfolio Viewer App</Title>
-                        <Title level={2}> Please upload a portfolio as a CSV file, look at your previous portfolios or choose one from the sider to view the detail and be able to edit</Title>
+                        <Title level={3}> Please upload a portfolio as a CSV file or choose a previously uploaded portfolio to view the detail and be able to edit</Title>
                         <AllPortfolios />
                         <br />
                         <Upload />
