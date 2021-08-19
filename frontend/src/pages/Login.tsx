@@ -4,30 +4,36 @@ import { loginFn } from '../services/index'
 import { useContextData } from '../hooks/context'
 import { Redirect } from 'react-router'
 
-const errormessage = (errmessage) => {
-  message.error(errmessage)
-}
-
 const { Title } = Typography
 
+const errormessage = (prop:{errmessage: string}) => {
+  message.error(prop.errmessage)
+}
 
-function Login({ history }) {
+interface UserInput{
+  email:string,
+  password:string,
+}
+
+
+function Login(prop:{ history:any }) {
 
   const [form] = Form.useForm()
   const { login, user } = useContextData()
 
+const{history}=prop
 
-  async function handleSubmit(userInput) {
+////FIXME no esta bien definido el prop
+  async function handleSubmit(obj:UserInput) {
 
-    console.log(userInput)
-    loginFn(userInput)
+    loginFn(obj)
       .then(data => {
         login({ data })
         history.push('/home')
       })
       .catch(err => {
         console.log(err)
-        errormessage("Wrong Credentials")
+        errormessage({errmessage:"Wrong Credentials"})
       })
 
   }
@@ -69,7 +75,7 @@ function Login({ history }) {
         </Row>
 
       </div>
-      // </div>
+
     )
 }
 export default Login
